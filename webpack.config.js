@@ -25,6 +25,8 @@ module.exports = {
       remotes: {
         header: 'mfe_travel_header@http://localhost:3001/remoteEntry.js',
         footer: 'mfe_travel_footer@http://localhost:3002/remoteEntry.js',
+        search: 'mfe_travel_search@http://localhost:3003/remoteEntry.js',
+        trips: 'mfe_travel_trips@http://localhost:3004/remoteEntry.js',
       },
       shared: {
         react: { singleton: true, requiredVersion: false },

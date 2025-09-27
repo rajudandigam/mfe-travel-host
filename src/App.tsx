@@ -1,7 +1,8 @@
 import React from 'react';
 const Header = React.lazy(() => import('header/Header'));
 const Footer = React.lazy(() => import('footer/Footer'));
-import Search from './components/Search';
+const RemoteSearch = React.lazy(() => import('search/Search'));
+const RemoteTrips = React.lazy(() => import('trips/Trips'));
 
 
 export default function App() {
@@ -26,9 +27,11 @@ export default function App() {
           alignContent: 'start',
           padding: '36px 20px 28px',
           minHeight: 0,
+          gridGap: 16,
         }}
       >
-        <Search />
+        <RemoteSearch />
+        <RemoteTrips />
       </main>
 
 
