@@ -1,43 +1,20 @@
 import React from 'react';
-const Header = React.lazy(() => import('header/Header'));
-const Footer = React.lazy(() => import('footer/Footer'));
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import Layout from './components/Layout';
+
 const RemoteSearch = React.lazy(() => import('search/Search'));
 const RemoteTrips = React.lazy(() => import('trips/Trips'));
 
-
 export default function App() {
   return (
-    <div
-      style={{
-        minHeight: '100vh',
-        display: 'grid',
-        gridTemplateRows: 'auto 1fr auto',
-        background: '#f7f8fb',
-      }}
-    >
-      <React.Suspense fallback={<div style={{ padding: 8 }}>Loading header…</div>}>
-        <Header />
-      </React.Suspense>
-
-
-      <main
-        style={{
-          display: 'grid',
-          justifyItems: 'center',
-          alignContent: 'start',
-          padding: '36px 20px 28px',
-          minHeight: 0,
-          gridGap: 16,
-        }}
-      >
-        <RemoteSearch />
-        <RemoteTrips />
-      </main>
-
-
-      <React.Suspense fallback={<div style={{ padding: 16 }}>Loading footer…</div>}>
-        <Footer />
-      </React.Suspense>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route element={<Layout />}>
+          <Route index element={<RemoteSearch />} />
+          <Route path="trips" element={<RemoteTrips />} />
+          <Route path="*" element={<Navigate to="/" replace />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
   );
 }

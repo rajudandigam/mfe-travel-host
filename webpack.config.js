@@ -31,6 +31,7 @@ module.exports = {
       shared: {
         react: { singleton: true, requiredVersion: false },
         'react-dom': { singleton: true, requiredVersion: false },
+        'react-router-dom': { singleton: true, requiredVersion: false },
       },
     }),
     new HtmlWebpackPlugin({ template: path.resolve(__dirname, 'public/index.html') }),
